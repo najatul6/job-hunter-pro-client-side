@@ -8,12 +8,19 @@ import AddAJob from "../pages/AddAJob/AddAJob";
 import AllJobs from "../pages/All Jobs/AllJobs";
 import LogIn from "../pages/LogIn/LogIn";
 import Register from "../pages/Register/Register";
+import Home from "../pages/Home/Home";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement:<ErrorPage/>,
         children: [
+            {
+                index:true,
+                element:<Home/>,
+            },
             {
                 path: 'alljobs',
                 element: <AllJobs></AllJobs>
