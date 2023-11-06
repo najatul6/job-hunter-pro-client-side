@@ -8,15 +8,20 @@ import { Helmet } from 'react-helmet-async';
 
 const Blogs = () => {
     return (
-        <div className='max-w-[1440px] mx-auto'>
+        <div>
             <Helmet>
                 <title>Job HunterPro | Blogs</title>
             </Helmet>
-            <div className='relative flex justify-center items-center w-full'>
-                <img className='w-full lg:h-screen rounded-xl' src={blogbg} alt="" />
-                <h1 className='absolute text-4xl lg:text-6xl font-bold w-full text-center bg-gradient-to-r from-[#818181] rounded-xl h-full flex justify-center items-center text-[#FF3811]'>Job Hunter Pro | Blogs</h1>
+            <div className="bg-cover bg-fixed"
+                style={{
+                    backgroundImage: `url(${blogbg})`,
+                    backgroundPosition: 'center',
+                    height: '300px',
+                }}>
+                <h2 className='py-10 h-full text-4xl items-center flex justify-center lg:text-6xl font-bold text-white w-full bg-gradient-to-r from-[#151515]'>Job Hunter Pro | Blogs</h2>
             </div>
-            <div className='my-5 text-white'>
+            
+            <div className='my-5 text-white max-w-[1440px] mx-auto'>
                 {/* Question - 01  */}
                 <div className='flex gap-5 flex-col items-center lg:flex-row'>
                     <div className='lg:w-1/2'>
@@ -60,6 +65,7 @@ const Blogs = () => {
                         </p>
                     </div>
                 </div>
+                <hr className='my-5'/>
                 <div className='flex gap-5 flex-col items-center lg:flex-row-reverse my-5'>
                     <div className='lg:w-1/2'>
                         <img src={tokenwork} alt="" />
@@ -75,6 +81,7 @@ const Blogs = () => {
                         </p>
                     </div>
                 </div>
+                <hr className='my-5'/>
                 {/* Question - 02  */}
                 <div className='flex gap-5 flex-col items-center lg:flex-row mt-5'>
                     <div className='lg:w-1/2'>
@@ -103,6 +110,7 @@ const Blogs = () => {
                         </p>
                     </div>
                 </div>
+                <hr className='my-5'/>
                 {/* Question - 03  */}
                 <div className='flex gap-5 flex-col items-center lg:flex-row-reverse my-5'>
                     <div className='lg:w-1/2'>
