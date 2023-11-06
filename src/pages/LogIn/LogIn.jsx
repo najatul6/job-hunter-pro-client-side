@@ -1,17 +1,73 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginimg from '../../assets/login.svg'
 import { AiFillGoogleCircle } from "react-icons/ai";
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
+import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import toast from 'react-hot-toast';
 
 const LogIn = () => {
+    const { signin, googleLogin } = useAuth();
+    const [error, setError] = useState();
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const handleLogIn = e => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const tostId = toast.loading("Logging in...")
+        signin(email, password)
+            .then(result => {
+                console.log(result.user)
+                if (toast.success('Log In successfully', { id: tostId })) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: "Log in Succesfully",
+                    })
+                }
+                navigate(location?.state ? location.state : '/');
+
+            })
+            .catch(error => {
+                toast.error(error.code, { id: tostId })
+                setError(error.code);
+            })
+    }
+
+    const handleGoogle = () => {
+        googleLogin()
+            .then(result => {
+                if (result.user) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: "Log in Succesfully",
+                    })
+                    navigate(location?.state ? location.state : '/');
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'warning',
+                    title: error.message,
+                })
+            })
+    }
+
     return (
         <div className="hero min-h-screen ">
+            <Helmet>
+                <title>Job HunterPro | Log In</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row">
                 <div className="text-center lg:mr-16 lg:text-left lg:w-1/2">
                     <img src={loginimg} alt="" />
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-6">
                     <h1 className="text-4xl font-bold text-center py-5">Log In</h1>
-                    <form className="card-body">
+                    <form onSubmit={handleLogIn} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -23,11 +79,14 @@ const LogIn = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input name="password" type="password" placeholder="password" className="input input-bordered" required />
-                            <label className="label">
+                            <label className="text-right">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>
-                        <div className="form-control mt-6">
+                        {
+                            error ? <p className='text-red-600 font-bold text-center  mt-6'>{error}</p> : ''
+                        }
+                        <div className="form-control">
                             <button type="submit" className="btn bg-[#FF3811] border-2 hover:border-[#FF3811] hover:text-[#FF3811] text-white">Log In</button>
                         </div>
                     </form>
@@ -39,7 +98,7 @@ const LogIn = () => {
                             <p className='w-[50px] h-[4px] rounded-xl bg-[#FF3811]'></p>
                         </div>
                         <div className='flex justify-center my-5'>
-                            <button className='text-white text-3xl text-center hover:text-[#FF3811]'>
+                            <button onClick={handleGoogle} className='text-white text-3xl text-center hover:text-[#FF3811]'>
                                 <AiFillGoogleCircle />
                             </button>
                         </div>

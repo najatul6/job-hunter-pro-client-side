@@ -1,6 +1,9 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const SideBar = () => {
+    const { user } = useAuth();
+
     return (
         <div className="flex flex-col gap-2">
             {/* Navbar menu content here */}
@@ -25,9 +28,12 @@ const SideBar = () => {
             <NavLink to="/about" className={({ isActive }) =>
                 isActive ? "btn bg-[#f16123] text-white" : "btn text-white btn-ghost hover:bg-[#f16123]"
             }>About</NavLink>
-            <NavLink to="/login" className={({ isActive }) =>
-                isActive ? "btn bg-[#f16123] text-white" : "btn text-white btn-ghost hover:bg-[#f16123]"
-            }>Log In</NavLink>
+            {
+                user ? '' :
+                    <NavLink to="/login" className={({ isActive }) =>
+                        isActive ? "btn bg-[#f16123] text-white" : "btn text-white btn-ghost hover:bg-[#f16123]"
+                    }>Log In</NavLink>
+            }
         </div>
     );
 };

@@ -10,6 +10,7 @@ import LogIn from "../pages/LogIn/LogIn";
 import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import PrivateRoutes from "./PrivateRoutes";
 
 const Routes = createBrowserRouter([
     {
@@ -27,11 +28,11 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'blogs',
-                element: <Blogs></Blogs>
+                element: <PrivateRoutes><Blogs/></PrivateRoutes>
             },
             {
                 path: 'about',
-                element: <About></About>
+                element: <PrivateRoutes><About/></PrivateRoutes>
             },
             {
                 path: 'myjobs',

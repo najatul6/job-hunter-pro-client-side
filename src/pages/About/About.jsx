@@ -1,9 +1,13 @@
+import { Helmet } from 'react-helmet-async';
 import aboutbg from '../../assets/bg.jpg'
 import johunterabout from '../../assets/jobhunter.jpg'
 
 const About = () => {
     return (
         <div className='max-w-[1440px] mx-auto'>
+            <Helmet>
+            <title>Job HunterPro | About</title>
+           </Helmet>
             <div className='relative flex justify-center items-center'>
                 <img className='w-full lg:h-screen rounded-xl' src={aboutbg} alt="" />
                 <h1 className='absolute text-4xl lg:text-6xl font-bold text-white w-full text-center bg-gradient-to-r from-[#818181] rounded-xl h-full flex justify-center items-center'>Job Hunter Pro | About US</h1>
