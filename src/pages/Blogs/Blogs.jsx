@@ -10,7 +10,7 @@ const Blogs = () => {
         <div className='max-w-[1440px] mx-auto'>
             <div className='relative flex justify-center items-center w-full'>
                 <img className='w-full lg:h-screen rounded-xl' src={blogbg} alt="" />
-                <h1 className='absolute text-4xl lg:text-6xl font-bold text-white w-full text-center bg-gradient-to-r from-[#818181] rounded-xl h-full flex justify-center items-center'>Job Hunter Pro | Blogs</h1>
+                <h1 className='absolute text-4xl lg:text-6xl font-bold w-full text-center bg-gradient-to-r from-[#818181] rounded-xl h-full flex justify-center items-center text-[#FF3811]'>Job Hunter Pro | Blogs</h1>
             </div>
             <div className='my-5 text-white'>
                 {/* Question - 01  */}
