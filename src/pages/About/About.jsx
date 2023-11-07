@@ -8,11 +8,10 @@ const About = () => {
             <Helmet>
                 <title>Job HunterPro | About</title>
             </Helmet>
-            <div className="bg-cover bg-fixed"
+            <div className="bg-cover bg-fixed h-[100px] lg:h-[200px]"
                 style={{
                     backgroundImage: `url(${aboutbg})`,
                     backgroundPosition:'center',
-                    height: '300px',
                 }}>
                 <h2 className='py-10 h-full text-4xl items-center flex justify-center lg:text-6xl font-bold text-white w-full bg-gradient-to-l from-[#FF3811] '>Job Hunter Pro | About US</h2>
             </div>

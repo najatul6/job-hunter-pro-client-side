@@ -32,12 +32,12 @@ const Navbar = () => {
                                         <img src={user.photoURL} />
                                     </div>
                                 </label>
-                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu dropdown-content bg-base-100 rounded-box ">
                                     <li>
-                                        <a className="justify-between">
-                                            {user.displayName}
-                                            {user.email}
-                                        </a>
+                                        {user.displayName}
+                                    </li>
+                                    <li>
+                                        {user.email}
                                     </li>
                                     <button onClick={handleLogOut} className="btn my-1 bg-[#f16022] text-white">Log Out</button>
                                 </ul>
@@ -86,10 +86,14 @@ const Navbar = () => {
                                         <img src={user.photoURL} />
                                     </div>
                                 </label>
-                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box">
                                     <li>
-                                        <a className="justify-between">
+                                        <a>
                                             {user.displayName}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
                                             {user.email}
                                         </a>
                                     </li>

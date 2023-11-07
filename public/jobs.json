@@ -1,0 +1,113 @@
+[
+    {
+      "pictureURL":"https://i.ibb.co/F7QpBRJ/Company-Banners.jpg",
+      "jobTitle": "Web Developer",
+      "username": "JohnDoe123",
+      "jobCategory": "On Site",
+      "salaryRange": "$60,000 - $80,000",
+      "jobDescription": "Seeking a talented web developer to join our team and work on exciting web projects.",
+      "jobPostingDate": "2023-11-01",
+      "applicationDeadline": "2023-11-15(11.59 PM)",
+      "jobApplicantNumber": 32
+    },
+    {
+      "pictureURL":"https://i.ibb.co/F7QpBRJ/Company-Banners.jpg",
+      "jobTitle": "Graphic Designer",
+      "username": "Designer123",
+      "jobCategory": "Remote",
+      "salaryRange": "$50,000 - $70,000",
+      "jobDescription": "Looking for a creative graphic designer to design stunning visual content.",
+      "jobPostingDate": "2023-11-03",
+      "applicationDeadline": "2023-11-18(11.59 PM)",
+      "jobApplicantNumber": 20
+    },
+    {
+      "pictureURL":"https://i.ibb.co/F7QpBRJ/Company-Banners.jpg",
+      "jobTitle": "Sales Manager",
+      "username": "SalesPro55",
+      "jobCategory": "On Site",
+      "salaryRange": "$70,000 - $90,000",
+      "jobDescription": "Join our team as a Sales Manager and lead a dynamic sales force to success.",
+      "jobPostingDate": "2023-10-25",
+      "applicationDeadline": "2023-11-10(11.59 PM)",
+      "jobApplicantNumber": 12
+    },
+    {
+      "pictureURL":"https://i.ibb.co/F7QpBRJ/Company-Banners.jpg",
+      "jobTitle": "Data Analyst",
+      "username": "DataNinja123",
+      "jobCategory": "Remote",
+      "salaryRange": "$55,000 - $75,000",
+      "jobDescription": "We're hiring a data analyst to interpret data, analyze results, and provide insights.",
+      "jobPostingDate": "2023-11-05",
+      "applicationDeadline": "2023-11-20(11.59 PM)",
+      "jobApplicantNumber": 25
+    },
+    {
+      "pictureURL":"https://i.ibb.co/F7QpBRJ/Company-Banners.jpg",
+      "jobTitle": "Marketing Coordinator",
+      "username": "MarketingPro456",
+      "jobCategory": "Part-Time",
+      "salaryRange": "$45,000 - $60,000",
+      "jobDescription": "Seeking a marketing enthusiast to assist in planning and executing marketing strategies.",
+      "jobPostingDate": "2023-10-28",
+      "applicationDeadline": "2023-11-12(11.59 PM)",
+      "jobApplicantNumber": 18
+    },
+    {
+      "pictureURL":"https://i.ibb.co/F7QpBRJ/Company-Banners.jpg",
+      "jobTitle": "Customer Support Specialist",
+      "username": "SupportHero789",
+      "jobCategory": "On Site",
+      "salaryRange": "$40,000 - $55,000",
+      "jobDescription": "Join our team as a customer support specialist and provide exceptional support to our clients.",
+      "jobPostingDate": "2023-11-02",
+      "applicationDeadline": "2023-11-16(11.59 PM)",
+      "jobApplicantNumber": 30
+    },
+    {
+      "pictureURL":"https://i.ibb.co/F7QpBRJ/Company-Banners.jpg",
+      "jobTitle": "Project Manager",
+      "username": "ProjectLeader555",
+      "jobCategory": "On Site",
+      "salaryRange": "$75,000 - $100,000",
+      "jobDescription": "We're looking for an experienced project manager to oversee and lead project teams.",
+      "jobPostingDate": "2023-10-30",
+      "applicationDeadline": "2023-11-14(11.59 PM)",
+      "jobApplicantNumber": 15
+    },
+    {
+      "pictureURL":"https://i.ibb.co/F7QpBRJ/Company-Banners.jpg",
+      "jobTitle": "Content Writer",
+      "username": "Wordsmith456",
+      "jobCategory": "Remote",
+      "salaryRange": "$40,000 - $55,000",
+      "jobDescription": "Hiring a creative content writer to produce engaging and informative content.",
+      "jobPostingDate": "2023-11-04",
+      "applicationDeadline": "2023-11-19(11.59 PM)",
+      "jobApplicantNumber": 22
+    },
+    {
+      "pictureURL":"https://i.ibb.co/F7QpBRJ/Company-Banners.jpg",
+      "jobTitle": "Accountant",
+      "username": "NumbersGuru789",
+      "jobCategory": "Hybrid",
+      "salaryRange": "$60,000 - $80,000",
+      "jobDescription": "Join our finance team as an accountant and help manage financial records.",
+      "jobPostingDate": "2023-10-29",
+      "applicationDeadline": "2023-11-13(11.59 PM)",
+      "jobApplicantNumber": 10
+    },
+    {
+      "pictureURL":"https://i.ibb.co/F7QpBRJ/Company-Banners.jpg",
+      "jobTitle": "Human Resources Specialist",
+      "username": "HRPro123",
+      "jobCategory": "On Site",
+      "salaryRange": "$50,000 - $70,000",
+      "jobDescription": "Seeking an HR specialist to support our HR functions and employee relations.",
+      "jobPostingDate": "2023-11-01",
+      "applicationDeadline": "2023-11-15(11.59 PM)",
+      "jobApplicantNumber": 14
+    }
+  ]
+  

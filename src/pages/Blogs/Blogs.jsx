@@ -12,11 +12,10 @@ const Blogs = () => {
             <Helmet>
                 <title>Job HunterPro | Blogs</title>
             </Helmet>
-            <div className="bg-cover bg-fixed"
+            <div className="bg-cover bg-fixed h-[100px] lg:h-[200px]"
                 style={{
                     backgroundImage: `url(${blogbg})`,
                     backgroundPosition: 'center',
-                    height: '300px',
                 }}>
                 <h2 className='py-10 h-full text-4xl items-center flex justify-center lg:text-6xl font-bold text-white w-full bg-gradient-to-r from-[#151515]'>Job Hunter Pro | Blogs</h2>
             </div>

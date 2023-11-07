@@ -11,16 +11,17 @@ import Register from "../pages/Register/Register";
 import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import PrivateRoutes from "./PrivateRoutes";
+import JobDetails from "../pages/JobDetails/JobDetails";
 
 const Routes = createBrowserRouter([
     {
         path: '/',
         element: <App />,
-        errorElement:<ErrorPage/>,
+        errorElement: <ErrorPage />,
         children: [
             {
-                index:true,
-                element:<Home/>,
+                index: true,
+                element: <Home />,
             },
             {
                 path: 'alljobs',
@@ -28,11 +29,11 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'blogs',
-                element: <PrivateRoutes><Blogs/></PrivateRoutes>
+                element: <PrivateRoutes><Blogs /></PrivateRoutes>
             },
             {
                 path: 'about',
-                element: <PrivateRoutes><About/></PrivateRoutes>
+                element: <PrivateRoutes><About /></PrivateRoutes>
             },
             {
                 path: 'myjobs',
@@ -46,16 +47,21 @@ const Routes = createBrowserRouter([
                 path: 'addajob',
                 element: <AddAJob></AddAJob>
             },
-
+            {
+                path:'jobDetails/:id',
+                element:<JobDetails></JobDetails>,
+                loader:({params})=>fetch(`http://localhost:5000/alljobs/${params.id}`)
+            }
+           
         ]
     },
     {
-        path:'/login',
-        element:<LogIn></LogIn>
+        path: '/login',
+        element: <LogIn></LogIn>
     },
     {
-        path:'/signup',
-        element:<Register></Register>
+        path: '/signup',
+        element: <Register></Register>
     }
 ]);
 

@@ -2,34 +2,61 @@ import { Link } from 'react-router-dom';
 import registerimg from '../../assets/registration.svg'
 import { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
+import { updateProfile } from 'firebase/auth';
+// import useAxios from '../../hooks/useAxios';
+
 
 const Register = () => {
-    const [name, setdisplayName] = useState('');
-    const [email, setemail] = useState('');
-    const [password, setpassword] = useState('');
-    const [photoURL, setphotoURL] = useState('');
     const [error, setError] = useState('')
-    const { createUser, user } = useAuth();
+    const { createUser } = useAuth();
+    // const navigate = useNavigate();
+    // const location = useLocation();
+    // const axios = useAxios();
 
 
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = e => {
         e.preventDefault();
-        try {
-            await createUser(email, password, name, photoURL)
-            if (user) {
-                Swal.fire({
-                    title: "Success",
-                    text: "User Created SuccessFully!",
-                    icon: "success"
-                });
-            }
-        }
-        catch (err) {
-            setError(err.code)
-        }
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photo = form.photoURL.value;
+        // const newUser = { displayName, photoURL };
+
+
+    createUser(email, password)
+        .then(result=>{
+            const user = result.user;
+            updateProfile(user, {
+                displayName: name,
+                photoURL: photo
+            })
+            
+            console.log(result.user)
+            const userData = {email, displayName: name, photoURL: photo}
+             axios.post('http://localhost:5000/allusers',userData)
+            .then(data=>{
+                console.log(data.data)
+            })
+        })
+            //     axios.post('/api/v1/allUsers', { user.email,newUser });
+            //     .then(function (response) {
+            //         console.log(response);
+            //       })
+            //       .catch(function (error) {
+            //         console.log(error);
+            //       });
+            //     console.log(result.user)
+                
+            //     navigate(location?.state ? location.state : '/');
+            // })
+            .catch(error => {
+                setError(error.code)
+            })
+
     }
     return (
         <div className="hero min-h-screen ">
@@ -48,25 +75,25 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input name="name" onBlur={(e) => setdisplayName(e.target.value)} type="text" placeholder="Full Name" className="input input-bordered" required />
+                            <input name="name" type="text" placeholder="Full Name" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input name="email" onBlur={(e) => setemail(e.target.value)} type="email" placeholder="email" className="input input-bordered" required />
+                            <input name="email" type="email" placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input name="password" onBlur={(e) => setpassword(e.target.value)} type="password" placeholder="password" className="input input-bordered" required />
+                            <input name="password" type="password" placeholder="password" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input name="photourl" onBlur={(e) => setphotoURL(e.target.value)} type="text" placeholder="Photo URL" className="input input-bordered" required />
+                            <input name="photoURL" type="text" placeholder="Photo URL" className="input input-bordered" required />
                         </div>
                         {
                             error ? <p className='text-red-600 text-center mt-4'>{error}</p> : ''

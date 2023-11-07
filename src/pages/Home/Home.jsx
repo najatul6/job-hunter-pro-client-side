@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "./Banner/Banner";
+import JobCategory from "./JobCategorys/JobCategory";
 
 const Home = () => {
     return (
@@ -7,8 +8,10 @@ const Home = () => {
             <Helmet>
                 <title>Job HunterPro | Home</title>
             </Helmet>
-            <Banner/>
-           
+            <div>
+                <Banner />
+                <JobCategory />
+            </div>
         </div>
     );
 };

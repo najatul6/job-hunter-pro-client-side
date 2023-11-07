@@ -10,31 +10,26 @@ import toast from 'react-hot-toast';
 const LogIn = () => {
     const { signin, googleLogin } = useAuth();
     const [error, setError] = useState();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
 
-    const handleLogIn = e => {
+    const handleLogIn = async (e) => {
         e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
         const tostId = toast.loading("Logging in...")
-        signin(email, password)
-            .then(result => {
-                console.log(result.user)
-                if (toast.success('Log In successfully', { id: tostId })) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: "Log in Succesfully",
-                    })
-                }
-                navigate(location?.state ? location.state : '/');
+        try {
+            await signin(email, password);
+            
+            toast.success('Log In successfully', { id: tostId })
+            navigate(location?.state ? location.state : '/');
+        }
+        catch (error) {
+            toast.error(error.code, { id: tostId })
+            setError(error.code);
+        }
 
-            })
-            .catch(error => {
-                toast.error(error.code, { id: tostId })
-                setError(error.code);
-            })
+
     }
 
     const handleGoogle = () => {
@@ -72,13 +67,13 @@ const LogIn = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input name="email" type="email" placeholder="email" className="input input-bordered" required />
+                            <input name="email" type="email" onBlur={(e) => setEmail(e.target.value)} placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input name="password" type="password" placeholder="password" className="input input-bordered" required />
+                            <input name="password" type="password" onBlur={(e) => setPassword(e.target.value)} placeholder="password" className="input input-bordered" required />
                             <label className="text-right">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
