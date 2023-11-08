@@ -1,7 +1,19 @@
 import { Helmet } from "react-helmet-async";
 import addbg from "../../assets/add.jpg";
+import useAxios from "../../hooks/useAxios";
+import useAuth from "../../hooks/useAuth";
+import { useState } from "react";
+import JobCards from "../Home/JobCategorys/JobCards";
 
 const MyJobs = () => {
+    const axios = useAxios();
+    const{user} = useAuth();
+    const[myjob, setmyjob]=useState();
+
+    axios.get(`/allJobs?userEmail=${user?.email}`)
+    .then(res =>{
+        setmyjob(res.data)
+    })
     return (
         <div>
             <Helmet>
@@ -15,8 +27,12 @@ const MyJobs = () => {
                 }}>
                 <h2 className='py-10 h-full text-4xl items-center flex justify-center lg:text-6xl font-bold text-white w-full bg-gradient-to-r from-[#151515]'>Job Hunter Pro | My Jobs</h2>
             </div>
-            <div className="max-w-[1440px] mx-auto">
-
+            <div className="max-w-[1440px] mx-auto my-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {
+                        myjob?.map(job=><JobCards key={job?._id} jobs={job}></JobCards>)
+                    }
+                </div>
             </div>
             
         </div>

@@ -1,35 +1,47 @@
+import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const ApplyModal = ({jobs}) => {
+const ApplyModal = ({ jobs }) => {
     const { user } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate()
 
-    const handleapply = e=>{
+    const handleapply = e => {
         e.preventDefault();
         const form = e.target;
         const jobId = form.jobid.value;
         const jobtitle = form.jobtitle.value;
         const name = form.name.value;
+        const serialNumber = jobs[0].jobApplicantNumber + 1;
         const email = user?.email;
         const resume = form.resumeLink.value;
-        const applier ={
-            JobID : jobId,
+        const applier = {
+            JobID: jobId,
             Position: jobtitle,
             name,
             email,
             resume,
+            serialNumber
         }
         console.log(applier)
-        fetch('http://localhost:5000/allappliedjobs',{
-            method:'POST',
-            headers:{
+        fetch('http://localhost:5000/allappliedjobs', {
+            method: 'POST',
+            headers: {
                 'content-type': 'application/json'
             },
-            body:JSON.stringify(applier)
+            body: JSON.stringify(applier)
         })
-        .then(res=>res.json())
-        .then(data =>{
-            console.log(data)
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Job Posted",
+                        icon: "success"
+                    });
+                    navigate(location?.state ? location.state : '/');
+                }
+            })
 
     }
 
@@ -69,13 +81,14 @@ const ApplyModal = ({jobs}) => {
                 <div className="form-control mt-6">
                     <button type="submit" className="btn bg-[#FF3811] border-2 hover:border-[#FF3811] hover:text-[#FF3811] text-white">Submit</button>
                 </div>
+                    {/* <div className="modal-action">
+                        <form method="dialog">
+                           
+                            <button className="btn">Close</button>
+                        </form>
+                    </div> */}
             </form>
-            <div className="modal-action">
-                <form method="dialog">
-                    {/* if there is a button, it will close the modal */}
-                    <button className="btn">Close</button>
-                </form>
-            </div>
+
         </div>
     );
 };

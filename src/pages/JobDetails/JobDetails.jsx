@@ -1,11 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import addbg from '../../assets/add.jpg'
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import ApplyModal from '../../components/ApplyModal';
+import useAuth from '../../hooks/useAuth';
 
 const JobDetails = () => {
+    const { user } = useAuth()
     const jobDetails = useLoaderData();
-    const { _id,pictureURL, jobTitle, salaryRange, jobDescription, jobApplicantNumber } = jobDetails;
+    const { _id, useremail, pictureURL, jobTitle, salaryRange, jobDescription, jobApplicantNumber } = jobDetails;
+    const location = useLocation()
     return (
         <div>
             <Helmet>
@@ -37,17 +40,30 @@ const JobDetails = () => {
                             <span className='underline text-[#FF3811]'> Number of Applicants :</span> {jobApplicantNumber}
                         </p>
                         <div className='card-actions justify-end'>
-                            <button onClick={() => document.getElementById('my_modal_4').showModal()} className="btn hover:text-white text-[#f16123] border-[#f16123] bg-transparent border-2 hover:bg-[#f16123]">
-                                Apply Now
-                            </button>
-                            <dialog id="my_modal_4" className="modal">
-                                <ApplyModal jobs={[{jobTitle},{_id}]}></ApplyModal>
-                            </dialog>
+                            {
+                                user?.email !== useremail ?
+                                    <>
+                                        <Link state={location.pathname}>
+                                            <button onClick={() => document.getElementById('my_modal_4').showModal()} className="btn hover:text-white text-[#f16123] border-[#f16123] bg-transparent border-2 hover:bg-[#f16123]">
+                                                Apply Now
+                                            </button>
+                                        </Link>
+                                        <dialog id="my_modal_4" className="modal">
+                                            <ApplyModal jobs={[{ jobTitle, jobApplicantNumber }, { _id }]}></ApplyModal>
+                                        </dialog>
+                                    </>
+                                    :
+                                    <Link to={`/update/${_id}`} state={location.pathname}>
+                                        <button className="btn hover:text-white text-[#f16123] border-[#f16123] bg-transparent border-2 hover:bg-[#f16123]">
+                                            Update Job
+                                        </button>
+                                    </Link>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -12,6 +12,7 @@ import Home from "../pages/Home/Home";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import PrivateRoutes from "./PrivateRoutes";
 import JobDetails from "../pages/JobDetails/JobDetails";
+import UpdateJobs from "../components/UpdateJobs";
 
 const Routes = createBrowserRouter([
     {
@@ -26,6 +27,11 @@ const Routes = createBrowserRouter([
             {
                 path: 'alljobs',
                 element: <AllJobs></AllJobs>
+            },
+            {
+                path: 'update/:id',
+                element: <UpdateJobs/>,
+                loader:({params})=>fetch(`http://localhost:5000/alljobs/${params.id}`)
             },
             {
                 path: 'blogs',
@@ -51,18 +57,20 @@ const Routes = createBrowserRouter([
                 path:'jobDetails/:id',
                 element:<JobDetails></JobDetails>,
                 loader:({params})=>fetch(`http://localhost:5000/alljobs/${params.id}`)
+            },
+            {
+                path: 'login',
+                element: <LogIn></LogIn>
+            },
+            {
+                path: 'signup',
+                element: <Register></Register>
             }
            
         ]
-    },
-    {
-        path: '/login',
-        element: <LogIn></LogIn>
-    },
-    {
-        path: '/signup',
-        element: <Register></Register>
     }
+    
+    
 ]);
 
 export default Routes;

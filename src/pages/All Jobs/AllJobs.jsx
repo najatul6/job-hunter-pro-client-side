@@ -6,8 +6,8 @@ import { useEffect, useState } from "react";
 
 const AllJobs = () => {
     const [jobs, setJobs] = useState();
-    const [keyword, setKeyword] = useState("null");
-    const url = `http://localhost:5000/alljobs?keyword=${keyword}`
+    const [keyword, setKeyword] = useState("");
+    const url = `http://localhost:5000/alljobs?keyword=${keyword}`;
 
     useEffect(() => {
         fetch(url)
@@ -20,7 +20,6 @@ const AllJobs = () => {
         const form = e.target;
         const searchText = form.search.value;
         setKeyword(searchText)
-        // console.log(searchText)
     }
 
     return (
