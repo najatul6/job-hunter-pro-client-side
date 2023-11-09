@@ -41,7 +41,7 @@ const UpdateJobs = () => {
                 console.log(data.data)
                 if (data.data.modifiedCount > 0) {
                     Swal.fire({
-                        title: "Job Posted",
+                        title: "Job Updated",
                         icon: "success"
                     });
                     navigate(location?.state ? location.state : '/');

@@ -2,7 +2,7 @@
 const AboutBanner = () => {
     return (
         <div>
-            
+             
         </div>
     );
 };
