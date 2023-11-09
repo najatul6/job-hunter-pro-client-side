@@ -3,9 +3,11 @@ import JobCards from "./JobCards";
 import useAllJob from "../../../hooks/useAllJob";
 import { Link } from "react-router-dom";
 import { AiOutlineDoubleRight } from "react-icons/ai";
+import { useState } from "react";
 
 const JobCategory = () => {
     const [jobs] = useAllJob();
+    // const [isShow, setIsShow] = useState(false)
     // const [jobs, setjobs] = useState()
     // useEffect(() => {
     //     fetch('/jobs.json')
@@ -21,7 +23,10 @@ const JobCategory = () => {
             <hr className="my-10" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
-                    jobs?.map(job => <JobCards key={job?._id} jobs={job}></JobCards>)
+                    jobs?.length > 7 ?
+                        jobs?.slice(0,6).map(job => <JobCards key={job?._id} jobs={job}></JobCards>)
+                        :
+                        ''
                 }
             </div>
             <div className="flex justify-center w-full mt-14">

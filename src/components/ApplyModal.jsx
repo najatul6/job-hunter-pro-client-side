@@ -36,7 +36,7 @@ const ApplyModal = ({ jobs }) => {
             .then(data => {
                 if (data.insertedId) {
                     Swal.fire({
-                        title: "Job Posted",
+                        title: "Job Applyed",
                         icon: "success"
                     });
                     navigate(location?.state ? location.state : '/');
@@ -81,12 +81,12 @@ const ApplyModal = ({ jobs }) => {
                 <div className="form-control mt-6">
                     <button type="submit" className="btn bg-[#FF3811] border-2 hover:border-[#FF3811] hover:text-[#FF3811] text-white">Submit</button>
                 </div>
-                    {/* <div className="modal-action">
+                    <div className="modal-action">
                         <form method="dialog">
                            
                             <button className="btn">Close</button>
                         </form>
-                    </div> */}
+                    </div>
             </form>
 
         </div>
