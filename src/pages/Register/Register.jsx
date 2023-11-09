@@ -37,7 +37,7 @@ const Register = () => {
             
             console.log(result.user)
             const userData = {email, displayName: name, photoURL: photo}
-             axios.post('http://localhost:5000/allusers',userData)
+             axios.post('https://job-hunter-pro-server-side.vercel.app/allusers',userData)
             .then(data=>{
                 console.log(data.data)
             })
