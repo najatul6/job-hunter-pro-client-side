@@ -9,7 +9,7 @@ const AllJobs = () => {
     const [jobs, setJobs] = useState();
     const [keyword, setKeyword] = useState("");
     const axios = useAxios()
-    const url = `http://localhost:5000/alljobs?keyword=${keyword}`;
+    const url = `https://job-hunter-pro-server-side.vercel.app/alljobs?keyword=${keyword}`;
 
     useEffect(() => {
         axios.get(url)

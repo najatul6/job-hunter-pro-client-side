@@ -26,7 +26,7 @@ const ApplyModal = ({ jobs }) => {
             resume,
             serialNumber
         }
-        axios.post('http://localhost:5000/allappliedjobs', applier)
+        axios.post('https://job-hunter-pro-server-side.vercel.app/allappliedjobs', applier)
         .then(res => {
             if (res.data.insertedId) {
                 Swal.fire({
