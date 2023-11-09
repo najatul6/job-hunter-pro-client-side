@@ -30,7 +30,7 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'update/:id',
-                element: <UpdateJobs/>,
+                element: <PrivateRoutes><UpdateJobs/></PrivateRoutes>  ,
                 loader:({params})=>fetch(`http://localhost:5000/alljobs/${params.id}`)
             },
             {
@@ -43,15 +43,15 @@ const Routes = createBrowserRouter([
             },
             {
                 path: 'myjobs',
-                element: <MyJobs></MyJobs>
+                element: <PrivateRoutes><MyJobs></MyJobs></PrivateRoutes> 
             },
             {
                 path: 'appliedjobs',
-                element: <AppliedJobs></AppliedJobs>
+                element: <PrivateRoutes><AppliedJobs></AppliedJobs></PrivateRoutes> 
             },
             {
                 path: 'addajob',
-                element: <AddAJob></AddAJob>
+                element: <PrivateRoutes><AddAJob></AddAJob></PrivateRoutes> 
             },
             {
                 path:'jobDetails/:id',

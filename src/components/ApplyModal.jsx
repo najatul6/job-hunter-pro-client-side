@@ -1,8 +1,10 @@
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAxios from "../hooks/useAxios";
 
 const ApplyModal = ({ jobs }) => {
+    const axios = useAxios();
     const { user } = useAuth();
     const location = useLocation();
     const navigate = useNavigate()
@@ -24,24 +26,16 @@ const ApplyModal = ({ jobs }) => {
             resume,
             serialNumber
         }
-        console.log(applier)
-        fetch('http://localhost:5000/allappliedjobs', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(applier)
+        axios.post('http://localhost:5000/allappliedjobs', applier)
+        .then(res => {
+            if (res.data.insertedId) {
+                Swal.fire({
+                    title: "Job Applyed",
+                    icon: "success"
+                });
+                navigate(location?.state ? location.state : '/');
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    Swal.fire({
-                        title: "Job Applyed",
-                        icon: "success"
-                    });
-                    navigate(location?.state ? location.state : '/');
-                }
-            })
 
     }
 
@@ -83,7 +77,6 @@ const ApplyModal = ({ jobs }) => {
                 </div>
                     <div className="modal-action">
                         <form method="dialog">
-                           
                             <button className="btn">Close</button>
                         </form>
                     </div>

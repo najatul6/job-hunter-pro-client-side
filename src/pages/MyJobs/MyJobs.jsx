@@ -10,7 +10,7 @@ const MyJobs = () => {
     const{user} = useAuth();
     const[myjob, setmyjob]=useState();
 
-    axios.get(`/allJobs?userEmail=${user?.email}`)
+    axios.get(`/allMyJobs/${user?.email}`)
     .then(res =>{
         setmyjob(res.data)
     })

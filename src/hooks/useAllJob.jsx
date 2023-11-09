@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
+import useAxios from './useAxios';
 
 const useAllJob = () => {
     const [jobs, setJobs] = useState();
+    const axios = useAxios()
 
     useEffect(() => {
-        fetch('http://localhost:5000/alljobs')
-            .then(res => res.json())
-            .then(data => setJobs(data))
+        axios.get('/alljobs')
+        .then(res => setJobs(res.data))
+        .catch(err => setJobs(err))
     }, []);
 
     return [jobs]

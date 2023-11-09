@@ -3,16 +3,21 @@ import addbg from "../../assets/add.jpg";
 // import useAllJob from "../../hooks/useAllJob";
 import JobCards from "../Home/JobCategorys/JobCards";
 import { useEffect, useState } from "react";
+import useAxios from "../../hooks/useAxios";
 
 const AllJobs = () => {
     const [jobs, setJobs] = useState();
     const [keyword, setKeyword] = useState("");
+    const axios = useAxios()
     const url = `http://localhost:5000/alljobs?keyword=${keyword}`;
 
     useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setJobs(data))
+        axios.get(url)
+        .then(res => setJobs(res.data))
+        .catch(err => console.log(err))
+        // fetch(url)
+        //     .then(res => res.json())
+        //     .then(data => setJobs(data))
     }, [url]);
 
     const handleSearch = e => {
