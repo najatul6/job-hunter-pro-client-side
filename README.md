@@ -100,7 +100,7 @@ npm run dev
 
 ```text
 ├── src
-│   ├── api        # Axios instance and API calls
+│   ├── hooks        # Axios instance and API calls
 │   ├── components # Reusable UI components (Navbar, Footer, JobCard)
 │   ├── layouts    # Main layouts (MainLayout)
 │   ├── pages      # Page components (Home, AllJobs, MyJobs, AppliedJobs, Login)
