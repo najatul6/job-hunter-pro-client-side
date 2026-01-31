@@ -10,7 +10,7 @@ const ErrorPage = () => {
             </Helmet>
             <img className='w-full md:h-[600px]' src={errorImg} alt="" />
             <h1 className='text-center text-4xl mb-5'>Page Not Found</h1>
-            <Link to='/' className='flex justify-center my-4'>
+            <Link to='/' className='flex justify-center my-4 cursor-pointer'>
                 <button className='bg-[#f16123] flex items-center gap-4 py-5 px-10 text-xl font-bold text-white rounded-ss-3xl rounded-ee-3xl border-2'>
                     <AiFillBackward/>
                     Go Back
